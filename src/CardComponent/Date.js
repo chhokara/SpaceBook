@@ -4,7 +4,7 @@ export class Date extends Component {
     render() {
         return (
             <div style={styles.rectangle}>
-                <text style={styles.text}>Today, 23rd Jan</text>
+                <text style={styles.text}>TODAY, 23RD JAN</text>
             </div>
         )
     }
@@ -27,7 +27,7 @@ const styles = {
     },
     text: {
         fontSize: '12px',
-        fontFamily: 'HK Grotesk',
+        fontFamily: 'HKGroteskSemiBold',
         color: 'white',
 
     }

@@ -9,7 +9,7 @@ export class CardBotHalf extends Component {
                 <div style = {styles.timesAndFloorOutside}>
                     <Time/>
                     <div style = {styles.timeLengthAndFloor}>
-                        <text>1 HOUR 30 MIN</text>
+                        <text style={{fontFamily:'HKGroteskBold'}}>1 HOUR 30 MIN</text>
                         <text>Floor 14 Room 9-C</text>
                     </div>
                 </div>
@@ -40,7 +40,8 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        marginBottom: '20px'
+        marginBottom: '20px',
+        // fontFamily: 'HKGrotesk'
     }
 }
 export default CardBotHalf
