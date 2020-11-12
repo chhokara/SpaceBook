@@ -1,12 +1,13 @@
 import './App.css';
 import Login from './Login'
+import Card from './CardComponent/Card'
 
 function App() {
   return (
   <div>
-    <div>
-        {/* <h1 style = {headerStyle}>SpaceBook</h1> */}
-        <Login />
+    <div className='centered'>
+        {/* <Login/> */}
+        <Card/>
     </div>
   </div>
   );

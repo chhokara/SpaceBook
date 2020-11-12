@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-
+import spaceBookLogo from './assets/spaceBookLogo.jpg'
 
 export class Login extends Component {
     render() {
         return (
-            <div className = "centered container">
-                <h1 style = {styles.headerStyle}>SpaceBook</h1>
+            <div className = "centered">
+                <img src={spaceBookLogo} />
                 <input 
                     type="text" 
                     name="email" 
@@ -50,9 +50,6 @@ const styles = {
         background: '#F2F2F2',
         border: '2px'
     },
-    // headerStyle: {
-    //     paddingTop: '20px'
-    // }
 }
 
 export default Login

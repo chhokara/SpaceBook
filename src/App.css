@@ -15,13 +15,25 @@ a{
 }
 
 .centered {
-  justify-content: center;
-  align-items: center;
-}
-
-.container {
   display: flex;
   flex-direction: column; 
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  /* position: relative; */
+}
+
+@font-face {
+  font-family: 'HKGrotesk';
+  /* font-weight: 100; */
+  src: local('HKGrotesk'), url(./fonts/Hk_Grotesk/HKGrotesk-Black.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'HKGroteskBold';
+  src: local('HKGroteskBold'), url(./fonts/Hk_Grotesk/HKGrotesk-Bold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'HKGroteskSemiBold';
+  src: local('HKGroteskSemiBold'), url(./fonts/Hk_Grotesk/HKGrotesk-SemiBold.otf) format('opentype');
 }
