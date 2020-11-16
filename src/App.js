@@ -1,13 +1,15 @@
 import './App.css';
 import Login from './Login'
 import Card from './CardComponent/Card'
+import DatesPage from './DatesPage/DatesPage'
 
 function App() {
   return (
   <div>
     <div className='centered'>
         {/* <Login/> */}
-        <Card/>
+        {/* <Card/> */}
+        <DatesPage/>
     </div>
   </div>
   );

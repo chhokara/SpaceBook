@@ -24,7 +24,8 @@ const styles = {
         height: '501px',
         borderRadius: '8px 8px 8px 8px', 
         overflow: 'hidden',
-        boxShadow: '0px 5px 15px 0px #000000'
+        // boxShadow: '0px 5px 15px 0px #000000',
+        boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.1)'
     },
     imgStyle: {
         width: '200px',
