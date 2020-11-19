@@ -39,7 +39,7 @@ const styles = {
     button: {
         width: '294px',
         height: '88px',
-        left: '77px',
+        left: '27px',
         top: '202px',
         background: '#1D1D1D',
         border: "2px solid #19C1B7",
@@ -64,13 +64,13 @@ const styles = {
     headerStyle: {
         paddingTop: '10px',
         fontFamily: 'Source Serif Pro',
-        height: '135px',
-        width: '235px',
+        height: '535px',
+        width: '255px',
         
         
         fontStyle: 'normal',
         fontWeight: 'normal',
-        fontSize: '35px',
+        fontSize: '40px',
         lineHeight: '110%',
 /* or 35px */
 

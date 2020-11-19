@@ -22,7 +22,68 @@ a{
 .container {
   display: flex;
   flex-direction: column; 
-  padding: 130px;
+  padding: 70px;
   /*min-width: 30vh;*/
   /* position: relative; */
+}
+
+
+.cards-slider {
+  overflow: hidden;
+	white-space: nowrap;
+	width: 300px;
+	height: 100%;
+	position: relative;
+	display: inline-block;
+  background: #e3e3e3;
+  margin: 5px 0;
+  border: 1px solid #D8D8D8;
+  box-shadow: 1px 1px 10px #D8D8D8;
+}
+
+.card {
+  float: center;
+	text-align: left;
+  background: #fff;
+  width: 405px;
+	max-width: 387px !important;
+	position: relative;
+	display: inline-block;
+	left: 0;
+	clear: both;
+  margin-right: 9px;
+	float: none !important;
+	transition: transform .2s ease-in-out;
+	vertical-align: top;
+  padding: 20px 22px;
+}
+
+
+
+.slider-btn {
+  padding: 0;
+  font-size: 20px;
+  text-align: center;
+  color: #b3b3b3;
+  width: 45px;
+  height: 100%;
+  border: 0;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  position: absolute;
+  z-index: 999;
+  transition: all 0.6s ease 0s;
+}
+
+.slider-btn:hover {
+  color: #5f5f5f;
+  background: rgba(0,0,0,0.2);
+}
+
+.btn-r {
+  right: 0;
+}
+.btn-l {
+  left: 0px;
 }
