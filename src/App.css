@@ -4,36 +4,39 @@
   padding: 0;
 }
 
-body{
-  font-family: Arial, Helvetica, sans-serif;
+body {
+  font-family: HKGrotesk, Arial, Helvetica, sans-serif;
   line-height: 1.4;
 }
 
-a{
+a {
   color: #333;
   text-decoration: none;
 }
 
 .centered {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
 @font-face {
-  font-family: 'HKGrotesk';
+  font-family: "HKGrotesk";
   /* font-weight: 100; */
-  src: local('HKGrotesk'), url(./fonts/Hk_Grotesk/HKGrotesk-Black.otf) format('opentype');
+  src: local("HKGrotesk"),
+    url(./fonts/Hk_Grotesk/HKGrotesk-Regular.otf) format("opentype");
 }
 
 @font-face {
-  font-family: 'HKGroteskBold';
-  src: local('HKGroteskBold'), url(./fonts/Hk_Grotesk/HKGrotesk-Bold.otf) format('opentype');
+  font-family: "HKGroteskBold";
+  src: local("HKGroteskBold"),
+    url(./fonts/Hk_Grotesk/HKGrotesk-Bold.otf) format("opentype");
 }
 
 @font-face {
-  font-family: 'HKGroteskSemiBold';
-  src: local('HKGroteskSemiBold'), url(./fonts/Hk_Grotesk/HKGrotesk-SemiBold.otf) format('opentype');
+  font-family: "HKGroteskSemiBold";
+  src: local("HKGroteskSemiBold"),
+    url(./fonts/Hk_Grotesk/HKGrotesk-SemiBold.otf) format("opentype");
 }

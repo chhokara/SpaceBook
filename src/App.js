@@ -1,20 +1,33 @@
-import './App.css';
-import Login from './Login'
-import Card from './CardComponent/Card'
+import "./App.css";
+import Login from "./Login";
+import Card from "./CardComponent/Card";
+import DatesPage from "./DatesPage/DatesPage";
+import TimesPage from "./TimesPage/TimesPage";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-  <div>
-    <div className='centered'>
-        {/* <Login/> */}
-        <Card/>
+    <div>
+      <div>
+        {/* <Card /> */}
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/datesPage" component={DatesPage} />
+            <Route exact path="/card" component={Card} />
+            <Route exact path="/timesPage" component={TimesPage} />
+          </Switch>
+        </Router>
+      </div>
     </div>
-  </div>
   );
 }
 
-const headerStyle = {
-  marginTop: '500px'
-}
+const styles = {
+  divSizing: {
+    // height: "90vh",
+    // width: '10vh'
+  },
+};
 
 export default App;
