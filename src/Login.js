@@ -1,57 +1,60 @@
-import React, { Component } from 'react'
-import spaceBookLogo from './assets/spaceBookLogo.jpg'
+import React, { Component } from "react";
+import spaceBookLogo from "./assets/spaceBookLogo.jpg";
 
 export class Login extends Component {
-    render() {
-        return (
-            <div className = "centered">
-                <img src={spaceBookLogo} />
-                <input 
-                    type="text" 
-                    name="email" 
-                    style = {styles.inputStyle}
-                    placeholder="Email" 
-                    />
-                <input 
-                    type="password" 
-                    name="password" 
-                    style={styles.inputStyle}
-                    placeholder="Password" 
-                    />
-                <button style={styles.button}>LOG IN</button> 
-                <button style={{...styles.button, background:'#F2FCFB', color:'#1D1D1D'}}>SIGN UP</button>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="centered" style={styles.outsideContainer}>
+        <img src={spaceBookLogo} />
+        <input
+          type="text"
+          name="email"
+          style={styles.inputStyle}
+          placeholder="Enter Email"
+        />
+        <input
+          type="password"
+          name="password"
+          style={styles.inputStyle}
+          placeholder="Enter Password"
+        />
+        <button style={styles.button}>LOGIN</button>
+        <button
+          style={{ ...styles.button, background: "#F2FCFB", color: "#1D1D1D" }}
+        >
+          SIGN UP
+        </button>
+      </div>
+    );
+  }
 }
 
 const styles = {
-    button: {
-        width: '202px',
-        height: '48px',
-        left: '236px',
-        top: '866px',
-        background: '#1D1D1D',
-        border: "2px solid #1D1D1D",
-        borderRadius: '4px', 
-        fontSize: '14px',
-        fontFamily: 'Avenir',
-        color: 'white',
-        marginTop: '10px'
-    },
-    inputStyle: {
-        // flex: '10', 
-        padding: '5px',
-        width: '417px',
-        height: '48px',
-        left: '511px',
-        top: '636px',
-        marginBottom: '10px', 
-        background: '#F2F2F2',
-        border: '2px'
-    },
-}
+  button: {
+    width: "202px",
+    height: "48px",
+    background: "#1D1D1D",
+    border: "2px solid #1D1D1D",
+    borderRadius: "4px",
+    fontWeight: "bold",
+    fontSize: "12px",
+    color: "white",
+    marginTop: "10px",
+  },
+  inputStyle: {
+    padding: "15px",
+    width: "80%",
+    maxWidth: "500px",
+    height: "48px",
+    marginBottom: "10px",
+    background: "#F2F2F2",
+    border: "2px solid #E0E0E0",
+    borderRadius: "6px",
+    fontFamily: "HKGrotesk",
+    fontSize: "15px",
+    letterSpacing: "0.07em",
+    background: "white",
+  },
+};
 
-export default Login
-
-
+export default Login;
