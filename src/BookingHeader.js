@@ -5,7 +5,13 @@ import MyPhoto from "./images/Fear_remedy.png";
 export class BookingHeader extends Component {
   render() {
     return (
-      <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          marginTop: "20px",
+        }}
+      >
         <h1 style={styles.headerStyle}>I am looking for</h1>
         <ReactRoundedImage
           image={MyPhoto}
@@ -19,5 +25,17 @@ export class BookingHeader extends Component {
     );
   }
 }
+
+const styles = {
+  headerStyle: {
+    // paddingTop: "100px",
+    fontFamily: "Source Serif Pro",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: "32px",
+    lineHeight: "110%",
+    letterSpacing: "-0.05em",
+  },
+};
 
 export default BookingHeader;
