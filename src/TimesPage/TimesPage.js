@@ -27,9 +27,9 @@ export class TimesPage extends Component {
     var slots = [];
     times.map((item, index) => slots.push(<TimeSlot time={item} />));
     return (
-      <div style={{ paddingRight: "20px", paddingLeft: "20px" }}>
+      <div>
         <SectionBar />
-        {slots}
+        <div style={{ paddingRight: "20px", paddingLeft: "40px" }}>{slots}</div>
       </div>
     );
   }

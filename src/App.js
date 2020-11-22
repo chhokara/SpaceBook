@@ -3,6 +3,7 @@ import Login from "./Login";
 import Card from "./CardComponent/Card";
 import DatesPage from "./DatesPage/DatesPage";
 import TimesPage from "./TimesPage/TimesPage";
+import BookingTimesPage from "./BookingTypePage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
