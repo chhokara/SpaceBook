@@ -1,9 +1,21 @@
 import React, { Component } from "react";
 
 export class TimeSlot extends Component {
+  state = {
+    opacityDepth: "0.2",
+  };
+
+  onClick = () => {
+    // opacityDepth = "0.5";
+    this.setState({ opacityDepth: "0.5" });
+    console.log("HEEERRRRRRRRREEEEEEEEEEE");
+  };
   render() {
     return (
-      <div style={styles.outsideContainer}>
+      <div
+        style={{ ...styles.outsideContainer, opacity: this.state.opacityDepth }}
+        onClick={this.onClick}
+      >
         <div style={styles.timeLabel}>{this.props.time}</div>
         <div style={styles.rectangle}></div>
       </div>
@@ -20,13 +32,13 @@ const styles = {
     fontSize: "10px",
     fontWeight: "bold",
     flexBasis: "30px", //min width
-    //flexGrow: 1,
+    // flexGrow: blue,
   },
   rectangle: {
     flexGrow: 1,
     height: "8vh",
     background: "#19C1B7",
-    opacity: "0.2",
+    // opacity: 0.2,
     borderBottom: "2px solid #1D1D1D",
     borderTop: "2px solid #1D1D1D",
   },
