@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SectionBar from "../DatesPage/SectionBar";
 import TimeSlot from "./TimeSlot";
+import BookingHeader from "../BookingHeader";
 
 let times = [
   "8 AM",
@@ -28,6 +29,7 @@ export class TimesPage extends Component {
     times.map((item, index) => slots.push(<TimeSlot time={item} />));
     return (
       <div>
+        <BookingHeader title="Book a room" />
         <SectionBar />
         <div style={{ paddingRight: "20px", paddingLeft: "40px" }}>{slots}</div>
       </div>

@@ -10,7 +10,6 @@ function App() {
   return (
     <div>
       <div>
-        {/* <Card /> */}
         <Router>
           <Switch>
             <Route exact path="/" component={Login} />

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import DateRectangle from "./DateRectangle";
 import SectionBar from "./SectionBar";
+import BookingHeader from "../BookingHeader";
+import { Link } from "react-router-dom";
 
 let days = [
   "Sunday",
@@ -32,19 +34,36 @@ for (var i = 0; i < 14; i++) {
   dates.push([newDate.getDate(), days[newDate.getDay()]]);
 }
 
+// const routeChange = (props) => {
+//   let path = `/timesPage`;
+//   let history = useHistory();
+//   history.push(path);
+// };
+
 export class DatesPage extends Component {
+  // routeChange = (props) => {
+  //   let path = `/timesPage`;
+  //   let history = useHistory();
+  //   history.push(path);
+  // };
+  // onClick1 = () => {
+  //   console.log("HEREREEEEEEEEEEEEEEEEEEEE");
+  //   return <Redirect to="/timesPage" />;
+  // };
+
   render() {
     return (
-      <div style={{ marginLeft: "20px", marginRight: "20px" }}>
+      <div>
+        <BookingHeader title="Book a room" />
         <SectionBar />
-        <text style={styles.monthName}>{months[new Date().getMonth()]}</text>
-        {dates.map((item, index) => (
-          <DateRectangle
-            // onClick={this.props.history.push("/timesPage")}
-            dateNum={item[0]}
-            weekDay={item[1]}
-          />
-        ))}
+        <div style={{ marginLeft: "20px", marginRight: "20px" }}>
+          <text style={styles.monthName}>{months[new Date().getMonth()]}</text>
+          {dates.map((item, index) => (
+            <Link to={"/timesPage"}>
+              <DateRectangle dateNum={item[0]} weekDay={item[1]} />
+            </Link>
+          ))}
+        </div>
       </div>
     );
   }

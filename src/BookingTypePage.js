@@ -5,7 +5,7 @@ export class BookingTypePage extends Component {
   render() {
     return (
       <div>
-        <BookingHeader />
+        <BookingHeader title="I am looking for..." />
         <button style={{ ...styles.button, background: "#19C1B7" }}>
           INDIVIDUAL WORKSPACE
         </button>

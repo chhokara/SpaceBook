@@ -8,11 +8,14 @@ export class BookingHeader extends Component {
       <div
         style={{
           display: "flex",
-          justifyContent: "space-evenly",
-          marginTop: "20px",
+          justifyContent: "space-between",
+          marginTop: "30px",
+          paddingLeft: "30px",
+          paddingRight: "30px",
         }}
       >
-        <h1 style={styles.headerStyle}>I am looking for</h1>
+        {/* <h1 style={styles.headerStyle}>I am looking for...</h1> */}
+        <h1 style={styles.headerStyle}>{this.props.title}</h1>
         <ReactRoundedImage
           image={MyPhoto}
           roundedColor="#321124"
