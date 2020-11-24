@@ -44,7 +44,7 @@ a {
 }
 
 .card {
-  float: center;
+  /* float: center; */
   text-align: left;
   background: #fff;
   width: 405px;
