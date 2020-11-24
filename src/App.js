@@ -5,6 +5,7 @@ import DatesPage from "./DatesPage/DatesPage";
 import TimesPage from "./TimesPage/TimesPage";
 import BookingTypePage from "./BookingTypePage";
 import HCard from "./HCardComponent/HCard";
+import ConfirmedPage from "./ConfirmedBookingPage/ConfirmedPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route exact path="/hCard" component={HCard} />
             <Route exact path="/timesPage" component={TimesPage} />
             <Route exact path="/bookingTypePage" component={BookingTypePage} />
+            <Route exact path="/confirmedPage" component={ConfirmedPage} />
           </Switch>
         </Router>
       </div>
