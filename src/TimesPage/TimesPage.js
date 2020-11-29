@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SectionBar from "../DatesPage/SectionBar";
 import TimeSlot from "./TimeSlot";
 import BookingHeader from "../BookingHeader";
+import { Link } from "react-router-dom";
 
 let times = [
   "8 AM",
@@ -24,25 +25,40 @@ let times = [
 ];
 
 export class TimesPage extends Component {
+  state = {
+    timeFromTo: "Choose a slot",
+  };
+
+  labelTimes = (time) => {
+    console.log("HELLLOOOO from TimesPage.js");
+    // console.log(times[times.indexOf(time) + 1]);
+    let timeFromToStr = time + "  to  " + times[times.indexOf(time) + 1];
+    this.setState({ timeFromTo: timeFromToStr });
+  };
+
   render() {
     var slots = [];
-    times.map((item, index) => slots.push(<TimeSlot time={item} />));
+    times.map((item, index) =>
+      slots.push(<TimeSlot time={item} labelTimes={this.labelTimes} />)
+    );
     return (
       <div>
         <BookingHeader title="Book a room" />
         <SectionBar />
-        <div style={{ paddingRight: "20px", paddingLeft: "40px" }}>{slots}</div>
         <div
           style={{
-            width: "200px",
-            backgroundColor: "white",
-            position: "fixed",
-            right: "0",
-            bottom: "0",
-            height: "83px",
+            paddingRight: "20px",
+            paddingLeft: "40px",
+            marginBottom: "100px",
           }}
         >
-          <button style={styles.button}>NEXT</button>
+          {slots}
+        </div>
+        <div style={styles.nextContainer}>
+          <text style={styles.timeFromToText}>{this.state.timeFromTo}</text>
+          <Link to="/roomSelectPage">
+            <button style={styles.button}>NEXT</button>
+          </Link>
         </div>
       </div>
     );
@@ -50,18 +66,33 @@ export class TimesPage extends Component {
 }
 
 const styles = {
+  nextContainer: {
+    display: "flex",
+    width: "300px",
+    backgroundColor: "white",
+    position: "fixed",
+    right: "0",
+    bottom: "0",
+    height: "83px",
+  },
   button: {
     width: "110px",
     height: "48px",
     right: "0",
-    marginLeft: "70px",
+    marginRight: "10px",
+    position: "absolute",
     background: "#1D1D1D",
     border: "2px solid #1D1D1D",
     borderRadius: "4px",
     fontWeight: "bold",
     fontSize: "12px",
     color: "white",
-    marginTop: "10px",
+    marginTop: "15px",
+  },
+  timeFromToText: {
+    marginTop: "20px",
+    fontFamily: "HKGroteskBold",
+    fontSize: "25px",
   },
 };
 

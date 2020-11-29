@@ -28,6 +28,7 @@ const styles = {
     borderRadius: "8px 8px 8px 8px",
     overflow: "hidden",
     boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.1)",
+    marginBottom: "20px",
   },
   imgContainer: {
     display: "flex",
