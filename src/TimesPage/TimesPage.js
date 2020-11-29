@@ -32,9 +32,37 @@ export class TimesPage extends Component {
         <BookingHeader title="Book a room" />
         <SectionBar />
         <div style={{ paddingRight: "20px", paddingLeft: "40px" }}>{slots}</div>
+        <div
+          style={{
+            width: "200px",
+            backgroundColor: "white",
+            position: "fixed",
+            right: "0",
+            bottom: "0",
+            height: "83px",
+          }}
+        >
+          <button style={styles.button}>NEXT</button>
+        </div>
       </div>
     );
   }
 }
+
+const styles = {
+  button: {
+    width: "110px",
+    height: "48px",
+    right: "0",
+    marginLeft: "70px",
+    background: "#1D1D1D",
+    border: "2px solid #1D1D1D",
+    borderRadius: "4px",
+    fontWeight: "bold",
+    fontSize: "12px",
+    color: "white",
+    marginTop: "10px",
+  },
+};
 
 export default TimesPage;
