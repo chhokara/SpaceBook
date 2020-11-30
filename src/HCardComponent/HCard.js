@@ -8,12 +8,12 @@ export class HCard extends Component {
     return (
       <div style={styles.outsideContainer}>
         <div style={styles.imgContainer}>
-          <img src={defaultDeskPic} style={{ height: "157px" }} />
+          <img src={this.props.picUrl} style={{ height: "157px" }} />
         </div>
         <div style={styles.positioning}>
           <PeopleCount />
         </div>
-        <HCardRightSide />
+        <HCardRightSide floor={this.props.floor} room={this.props.room} />
       </div>
     );
   }
@@ -28,6 +28,7 @@ const styles = {
     borderRadius: "8px 8px 8px 8px",
     overflow: "hidden",
     boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.1)",
+    marginBottom: "20px",
   },
   imgContainer: {
     display: "flex",

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import spaceBookLogo from "./assets/spaceBookLogo.jpg";
+import { Link } from "react-router-dom";
 
 export class Login extends Component {
   render() {
@@ -18,7 +19,9 @@ export class Login extends Component {
           style={styles.inputStyle}
           placeholder="Enter Password"
         />
-        <button style={styles.button}>LOGIN</button>
+        <Link to="/home">
+          <button style={styles.button}>LOGIN</button>
+        </Link>
         <button
           style={{ ...styles.button, background: "#F2FCFB", color: "#1D1D1D" }}
         >

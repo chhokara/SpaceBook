@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Display from "./CardComponent/Slider";
 import BookingHeader from "./BookingHeader";
+import { Link } from "react-router-dom";
 
 export class Scroll extends Component {
   render() {
@@ -9,7 +10,9 @@ export class Scroll extends Component {
         <BookingHeader title="My Bookings" />
         <div style={styles.sliderAndButtonDiv}>
           <Display />
-          <button style={styles.button}>+ NEW BOOKING</button>
+          <Link to="/datesPage">
+            <button style={styles.button}>+ NEW BOOKING</button>
+          </Link>
         </div>
       </div>
     );

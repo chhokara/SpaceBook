@@ -6,9 +6,8 @@ export class TimeSlot extends Component {
   };
 
   onClick = () => {
-    // opacityDepth = "0.5";
     this.setState({ opacityDepth: "0.5" });
-    console.log("HEEERRRRRRRRREEEEEEEEEEE");
+    this.props.labelTimes(this.props.time);
   };
   render() {
     return (
