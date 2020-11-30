@@ -26,12 +26,18 @@ export class RoomSelectPage extends Component {
           "https://www.langdonhall.ca/wp-content/uploads/bb-plugin/cache/MeetingRooms-3370_low-res-landscape.jpg",
       },
     ],
+    timeFromTo: "",
   };
 
-  //   slots = [];
-  //   state.map((item, index) => slots.push(<TimeSlot time={item} />))
+  componentDidMount() {
+    const { handle } = this.props.match.params;
+    const { timeFromTo } = this.props.location.state;
+    console.log("I'm in component did mount of RoomSelectPage");
+    this.setState({ timeFromTo });
+  }
 
   render() {
+    // console.log(this.state.timeFromTo);
     return (
       <div>
         <BookingHeader title="Book a room" />

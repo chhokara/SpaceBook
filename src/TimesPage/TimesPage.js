@@ -27,6 +27,9 @@ let times = [
 export class TimesPage extends Component {
   state = {
     timeFromTo: "Choose a slot",
+    month: "",
+    dayOfMonth: "",
+    weekDay: "",
   };
 
   labelTimes = (time) => {
@@ -35,6 +38,17 @@ export class TimesPage extends Component {
     let timeFromToStr = time + "  to  " + times[times.indexOf(time) + 1];
     this.setState({ timeFromTo: timeFromToStr });
   };
+
+  componentDidMount() {
+    const { handle } = this.props.match.params;
+    const { month } = this.props.location.state;
+    const { dayOfMonth } = this.props.location.state;
+    const { weekDay } = this.props.location.state;
+    console.log("I'm in component did mount of TimesPage.js");
+    this.setState({ month });
+    this.setState({ dayOfMonth });
+    this.setState({ weekDay });
+  }
 
   render() {
     var slots = [];
@@ -52,11 +66,23 @@ export class TimesPage extends Component {
             marginBottom: "100px",
           }}
         >
+          <text style={styles.dateText}>
+            {this.state.weekDay}, {this.state.month}
+          </text>
+          <text style={{ ...styles.dateText, fontSize: "30px" }}>
+            {" "}
+            {this.state.dayOfMonth}
+          </text>
           {slots}
         </div>
         <div style={styles.nextContainer}>
           <text style={styles.timeFromToText}>{this.state.timeFromTo}</text>
-          <Link to="/roomSelectPage">
+          <Link
+            to={{
+              pathname: "/roomSelectPage",
+              state: { timeFromTo: this.state.timeFromTo },
+            }}
+          >
             <button style={styles.button}>NEXT</button>
           </Link>
         </div>
@@ -93,6 +119,12 @@ const styles = {
     marginTop: "20px",
     fontFamily: "HKGroteskBold",
     fontSize: "25px",
+  },
+  dateText: {
+    fontFamily: "HKGrotesk",
+    color: "#448985",
+    fontSize: "18px",
+    fontWeight: "bold",
   },
 };
 

@@ -43,7 +43,16 @@ export class DatesPage extends Component {
         <div style={{ marginLeft: "20px", marginRight: "20px" }}>
           <text style={styles.monthName}>{months[new Date().getMonth()]}</text>
           {dates.map((item, index) => (
-            <Link to="/timesPage">
+            <Link
+              to={{
+                pathname: "/timesPage",
+                state: {
+                  month: months[new Date().getMonth()],
+                  dayOfMonth: item[0],
+                  weekDay: item[1],
+                },
+              }}
+            >
               <DateRectangle dateNum={item[0]} weekDay={item[1]} />
             </Link>
           ))}
