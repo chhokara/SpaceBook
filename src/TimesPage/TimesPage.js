@@ -5,28 +5,30 @@ import BookingHeader from "../BookingHeader";
 import { Link } from "react-router-dom";
 
 let times = [
-  "8 AM",
-  "9 AM",
-  "10 AM",
-  "11 AM",
-  "12 PM",
-  "1 PM",
-  "2 PM",
-  "3 PM",
-  "4 PM",
-  "5 PM",
-  "6 PM",
-  "7 PM",
-  "8 PM",
-  "9 PM",
-  "10 PM",
-  "11 PM",
-  "12 AM",
+  "8:00am",
+  "9:00am",
+  "10:00am",
+  "11:00am",
+  "12:00pm",
+  "1:00pm",
+  "2:00pm",
+  "3:00pm",
+  "4:00pm",
+  "5:00pm",
+  "6:00pm",
+  "7:00pm",
+  "8:00pm",
+  "9:00pm",
+  "10:00pm",
+  "11:00pm",
+  "12:00am",
 ];
 
 export class TimesPage extends Component {
   state = {
     timeFromTo: "Choose a slot",
+    timeFrom: "",
+    timeTo: "",
     month: "",
     dayOfMonth: "",
     weekDay: "",
@@ -34,9 +36,10 @@ export class TimesPage extends Component {
 
   labelTimes = (time) => {
     console.log("HELLLOOOO from TimesPage.js");
-    // console.log(times[times.indexOf(time) + 1]);
     let timeFromToStr = time + "  to  " + times[times.indexOf(time) + 1];
     this.setState({ timeFromTo: timeFromToStr });
+    this.setState({ timeFrom: time });
+    this.setState({ timeTo: times[times.indexOf(time) + 1] });
   };
 
   componentDidMount() {
@@ -51,6 +54,7 @@ export class TimesPage extends Component {
   }
 
   render() {
+    console.log(this.state);
     var slots = [];
     times.map((item, index) =>
       slots.push(<TimeSlot time={item} labelTimes={this.labelTimes} />)
@@ -80,7 +84,13 @@ export class TimesPage extends Component {
           <Link
             to={{
               pathname: "/roomSelectPage",
-              state: { timeFromTo: this.state.timeFromTo },
+              state: {
+                timeFrom: this.state.timeFrom,
+                timeTo: this.state.timeTo,
+                month: this.state.month,
+                dayOfMonth: this.state.dayOfMonth,
+                weekDay: this.state.weekDay,
+              },
             }}
           >
             <button style={styles.button}>NEXT</button>
@@ -94,7 +104,7 @@ export class TimesPage extends Component {
 const styles = {
   nextContainer: {
     display: "flex",
-    width: "300px",
+    width: "400px",
     backgroundColor: "white",
     position: "fixed",
     right: "0",
