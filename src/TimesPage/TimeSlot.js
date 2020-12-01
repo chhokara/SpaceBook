@@ -30,7 +30,7 @@ const styles = {
   timeLabel: {
     fontSize: "10px",
     fontWeight: "bold",
-    flexBasis: "30px", //min width
+    flexBasis: "43px", //min width
     // flexGrow: blue,
   },
   rectangle: {

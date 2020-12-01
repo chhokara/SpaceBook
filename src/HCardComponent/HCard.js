@@ -4,9 +4,25 @@ import defaultDeskPic from "../assets/defaultDeskPic.jpg";
 import PeopleCount from "./PeopleCount";
 
 export class HCard extends Component {
+  state = {
+    borderColor: "",
+  };
+
+  onClick = () => {
+    let floorAndRoomStr = this.props.floor + " " + this.props.room;
+    this.props.cardOnClick(floorAndRoomStr, this.props.picUrl);
+    this.setState({ borderColor: "4px solid #19C1B7" });
+  };
+
   render() {
     return (
-      <div style={styles.outsideContainer}>
+      <div
+        style={{
+          ...styles.outsideContainer,
+          border: this.state.borderColor,
+        }}
+        onClick={this.onClick}
+      >
         <div style={styles.imgContainer}>
           <img src={this.props.picUrl} style={{ height: "157px" }} />
         </div>

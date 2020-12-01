@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import BookingInfo from "./BookingInfo";
-import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-import DoneButton from "./DoneButton";
+import BookingHeader from "../BookingHeader";
+import SectionBar from "../DatesPage/SectionBar";
+import FieldSection from "./FieldSection";
+import Buttons from "./Buttons";
 import { Link } from "react-router-dom";
 
-export class ConfirmedPage extends Component {
+export class BookingPage extends Component {
   state = {
     timeFrom: "",
     timeTo: "",
@@ -14,6 +15,7 @@ export class ConfirmedPage extends Component {
     space: "",
     roomPicUrl: "",
   };
+
   componentDidMount() {
     const { handle } = this.props.match.params;
     const { timeFrom } = this.props.location.state;
@@ -32,22 +34,21 @@ export class ConfirmedPage extends Component {
     this.setState({ roomPicUrl });
   }
   render() {
+    console.log(this.state);
     return (
-      <div style={styles.page}>
-        <IoIosCheckmarkCircleOutline style={styles.icon} />
-        <text style={styles.text}>Booking confirmed!</text>
-        <text style={{ color: "white" }}>_____________________</text>
-        {/* View component to make the line would be better */}
-        <BookingInfo
-          timeFrom={this.state.timeFrom}
-          timeTo={this.state.timeTo}
+      <div>
+        <BookingHeader title="Book a room" />
+        <SectionBar />
+        <FieldSection
           month={this.state.month}
           dayOfMonth={this.state.dayOfMonth}
+          timeFrom={this.state.timeFrom}
+          timeTo={this.state.timeTo}
           space={this.state.space}
         />
         <Link
           to={{
-            pathname: "/home",
+            pathname: "/confirmedPage",
             state: {
               timeFrom: this.state.timeFrom,
               timeTo: this.state.timeTo,
@@ -59,7 +60,8 @@ export class ConfirmedPage extends Component {
             },
           }}
         >
-          <DoneButton />
+          {/* just have both buttons take us to confirmed for now */}
+          <Buttons />
         </Link>
       </div>
     );
@@ -67,27 +69,11 @@ export class ConfirmedPage extends Component {
 }
 
 const styles = {
-  page: {
+  formatting: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-evenly",
-    height: "100vh",
-    padding: "50px",
     alignItems: "center",
-    backgroundColor: "#19C1B7",
-  },
-  icon: {
-    position: "relative",
-    color: "white",
-    fontSize: "200px",
-  },
-  text: {
-    position: "relative",
-    fontFamily: "Source Serif Pro",
-    color: "rgba(255, 255, 255, 0.5)",
-    fontSize: "24px",
-    fontWeight: "bold",
   },
 };
 
-export default ConfirmedPage;
+export default BookingPage;
