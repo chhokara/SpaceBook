@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import BookingInfo from "./BookingInfo";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import DoneButton from "./DoneButton";
+import { Link } from "react-router-dom";
 
 export class ConfirmedPage extends Component {
   state = {
@@ -44,7 +45,22 @@ export class ConfirmedPage extends Component {
           dayOfMonth={this.state.dayOfMonth}
           space={this.state.space}
         />
-        <DoneButton />
+        <Link
+          to={{
+            pathname: "/home",
+            state: {
+              timeFrom: this.state.timeFrom,
+              timeTo: this.state.timeTo,
+              month: this.state.month,
+              dayOfMonth: this.state.dayOfMonth,
+              weekDay: this.state.weekDay,
+              space: this.state.space,
+              roomPicUrl: this.state.roomPicUrl,
+            },
+          }}
+        >
+          <DoneButton />
+        </Link>
       </div>
     );
   }
