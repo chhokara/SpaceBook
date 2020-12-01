@@ -10,6 +10,7 @@ import HCard from "./HCardComponent/HCard";
 import ConfirmedPage from "./ConfirmedBookingPage/ConfirmedPage";
 import Scroll from "./home";
 import RoomSelectPage from "./RoomSelectPage";
+import BookingPage from "./BookingFieldPage/BookingFieldPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import firebase from "./firebase";
 
@@ -79,6 +80,7 @@ function App() {
             <Route exact path="/bookingTypePage" component={BookingTypePage} />
             <Route exact path="/confirmedPage" component={ConfirmedPage} />
             <Route exact path="/roomSelectPage" component={RoomSelectPage} />
+            <Route exact path="/bookingFieldPage" component={BookingPage} />
           </Switch>
         </Router>
       </div>
