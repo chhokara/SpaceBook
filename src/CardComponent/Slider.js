@@ -96,7 +96,7 @@ class Display extends React.Component {
           floorAndRoom: "Floor 15 Room 9-C",
           timeFrom: "1:30pm",
           timeTo: "3:30pm",
-          date: "TODAY, 23RD JAN",
+          date: "TODAY, 2ND DEC",
           picUrl: defaultDeskPic,
         },
         {
@@ -104,7 +104,7 @@ class Display extends React.Component {
           floorAndRoom: "Floor 1 Room 4-D",
           timeFrom: "9:30am",
           timeTo: "11:00am",
-          date: "WEDNESDAY, 25TH JAN",
+          date: "THURSDAY, 3RD DEC",
           picUrl: "https://www.aver.com/Upload/Expert/31/Main.jpg",
         },
         {
@@ -112,7 +112,7 @@ class Display extends React.Component {
           floorAndRoom: "Floor 12 Room 5-C",
           timeFrom: "1:30pm",
           timeTo: "3:00pm",
-          date: "SATURDAY, 28TH JAN",
+          date: "FRIDAY, 4TH DEC",
           picUrl:
             "https://spaceiq.com/app/default/assets/images/s-o-c-i-a-l-c-u-t-1RT4txDDAbM-unsplash.jpg?v=1579637066",
         },
