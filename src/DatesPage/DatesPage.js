@@ -36,10 +36,34 @@ for (var i = 0; i < 14; i++) {
   dates.push([newDate.getDate(), days[newDate.getDay()]]);
 }
 
-const mapBookingInfoStateToProps = (state) => ({
-  //map store states to props in our class component below using connector
-  dayOfMonth: state.dayOfMonth,
-});
+const getCorrectMonth = (dayOfMonth) => {
+  //if selected day is less than today then it's next month
+  if (dayOfMonth < new Date().getDate()) {
+    return months[new Date().getMonth() + 1];
+  } else {
+    return months[new Date().getMonth()];
+  }
+};
+
+const ifNextMonth = (dayOfMonth) => {
+  //if it's 1st of next month then put new month above day
+  if (dayOfMonth == 1) {
+    return (
+      <text style={{ ...styles.monthName, marginTop: "10px" }}>
+        {months[new Date().getMonth() + 1]}
+      </text>
+    );
+  } else {
+    return null;
+  }
+};
+
+////connect stuff from 'react-redux'
+
+// const mapBookingInfoStateToProps = (state) => ({
+//   //map store states to props in our class component below using connector
+//   dayOfMonth: state.dayOfMonth,
+// });
 
 const mapDispatchToProps = () => {
   return {
@@ -61,12 +85,13 @@ export class DatesPage extends Component {
               onClick={() =>
                 this.props.changeBookingInfo({
                   //changeBookingInfo() is one of the actions created and passed as a prop
-                  month: months[new Date().getMonth()],
+                  month: getCorrectMonth(item[0]),
                   dayOfMonth: item[0],
                   weekDay: item[1],
                 })
               }
             >
+              {ifNextMonth(item[0])}
               <DateRectangle dateNum={item[0]} weekDay={item[1]} />
             </Link>
           ))}
@@ -89,7 +114,4 @@ const styles = {
 };
 
 // export default DatesPage;
-export default connect(
-  mapBookingInfoStateToProps,
-  mapDispatchToProps()
-)(DatesPage);
+export default connect(null, mapDispatchToProps())(DatesPage);
