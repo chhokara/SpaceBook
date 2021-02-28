@@ -33,18 +33,23 @@ const mapBookingInfoStateToProps = (state) => ({
   weekDay: state.weekDay,
 });
 
+const mapDispatchToProps = () => {
+  return {
+    changeBookingInfo,
+  };
+};
+
 export class TimesPage extends Component {
   state = {
     timeFromTo: "Choose a slot",
     timeFrom: "",
     timeTo: "",
-    month: "",
-    dayOfMonth: "",
-    weekDay: "",
+    // month: "",
+    // dayOfMonth: "",
+    // weekDay: "",
   };
 
   labelTimes = (time) => {
-    console.log("HELLLOOOO from TimesPage.js");
     let timeFromToStr = time + "  to  " + times[times.indexOf(time) + 1];
     this.setState({ timeFromTo: timeFromToStr });
     this.setState({ timeFrom: time });
@@ -69,12 +74,10 @@ export class TimesPage extends Component {
           }}
         >
           <text style={styles.dateText}>
-            {/* {this.state.weekDay}, {this.state.month} */}
             {this.props.weekDay}, {this.props.month}
           </text>
           <text style={{ ...styles.dateText, fontSize: "30px" }}>
             {" "}
-            {/* {this.state.dayOfMonth} */}
             {this.props.dayOfMonth}
           </text>
           {slots}
@@ -82,16 +85,13 @@ export class TimesPage extends Component {
         <div style={styles.nextContainer}>
           <text style={styles.timeFromToText}>{this.state.timeFromTo}</text>
           <Link
-            to={{
-              pathname: "/roomSelectPage",
-              state: {
+            to={"/roomSelectPage"}
+            onClick={() =>
+              this.props.changeBookingInfo({
                 timeFrom: this.state.timeFrom,
                 timeTo: this.state.timeTo,
-                month: this.state.month,
-                dayOfMonth: this.state.dayOfMonth,
-                weekDay: this.state.weekDay,
-              },
-            }}
+              })
+            }
           >
             <button style={styles.button}>NEXT</button>
           </Link>
@@ -139,4 +139,7 @@ const styles = {
 };
 
 // export default TimesPage;
-export default connect(mapBookingInfoStateToProps, null)(TimesPage);
+export default connect(
+  mapBookingInfoStateToProps,
+  mapDispatchToProps()
+)(TimesPage);

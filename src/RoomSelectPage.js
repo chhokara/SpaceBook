@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import BookingHeader from "./BookingHeader";
 import SectionBar from "./DatesPage/SectionBar";
-
 import HCard from "./HCardComponent/HCard";
+import { connect } from "react-redux"; //for accessing global state (store)
+import { changeBookingInfo } from "./actions";
+
+const mapDispatchToProps = () => {
+  return {
+    changeBookingInfo,
+  };
+};
 
 export class RoomSelectPage extends Component {
   state = {
@@ -27,28 +34,14 @@ export class RoomSelectPage extends Component {
           "https://www.langdonhall.ca/wp-content/uploads/bb-plugin/cache/MeetingRooms-3370_low-res-landscape.jpg",
       },
     ],
-    timeFrom: "",
-    timeTo: "",
-    month: "",
-    dayOfMonth: "",
-    weekDay: "",
+    // timeFrom: "",
+    // timeTo: "",
+    // month: "",
+    // dayOfMonth: "",
+    // weekDay: "",
     space: "",
     roomPicUrl: "",
   };
-
-  componentDidMount() {
-    const { handle } = this.props.match.params;
-    const { timeFrom } = this.props.location.state;
-    this.setState({ timeFrom });
-    const { timeTo } = this.props.location.state;
-    this.setState({ timeTo });
-    const { month } = this.props.location.state;
-    this.setState({ month });
-    const { dayOfMonth } = this.props.location.state;
-    this.setState({ dayOfMonth });
-    const { weekDay } = this.props.location.state;
-    this.setState({ weekDay });
-  }
 
   cardOnClick = (floorAndRoom, roomPicUrl) => {
     console.log("I'm in cardOnClick of RoomSelectPage");
@@ -73,7 +66,7 @@ export class RoomSelectPage extends Component {
           ))}
         </div>
         <div style={styles.nextContainer}>
-          <Link
+          {/* <Link
             to={{
               pathname: "/bookingFieldPage",
               state: {
@@ -86,6 +79,15 @@ export class RoomSelectPage extends Component {
                 roomPicUrl: this.state.roomPicUrl,
               },
             }}
+          > */}
+          <Link
+            to={"/bookingFieldPage"}
+            onClick={() =>
+              this.props.changeBookingInfo({
+                space: this.state.space,
+                roomPicUrl: this.state.roomPicUrl,
+              })
+            }
           >
             <button style={styles.button}>NEXT</button>
           </Link>
@@ -120,4 +122,5 @@ const styles = {
     marginTop: "15px",
   },
 };
-export default RoomSelectPage;
+// export default RoomSelectPage;
+export default connect(null, mapDispatchToProps())(RoomSelectPage);

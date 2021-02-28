@@ -2,6 +2,10 @@ const initialState = {
   month: "",
   dayOfMonth: 0,
   weekDay: "",
+  timeFrom: "",
+  timeTo: "",
+  space: "",
+  roomPicUrl: "",
 };
 
 export default (state = initialState, { type, payload }) => {
