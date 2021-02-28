@@ -57,7 +57,6 @@ export class TimesPage extends Component {
   };
 
   render() {
-    console.log(this.state);
     var slots = [];
     times.map((item, index) =>
       slots.push(<TimeSlot time={item} labelTimes={this.labelTimes} />)
