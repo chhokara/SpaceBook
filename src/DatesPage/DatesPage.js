@@ -3,6 +3,8 @@ import DateRectangle from "./DateRectangle";
 import SectionBar from "./SectionBar";
 import BookingHeader from "../BookingHeader";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux"; //for accessing global state (store)
+import { changeBookingInfo } from "../actions";
 
 let days = [
   "Sunday",
@@ -34,6 +36,17 @@ for (var i = 0; i < 14; i++) {
   dates.push([newDate.getDate(), days[newDate.getDay()]]);
 }
 
+const mapBookingInfoStateToProps = (state) => ({
+  //map store states to props in our class component below using connector
+  dayOfMonth: state.dayOfMonth,
+});
+
+const mapDispatchToProps = () => {
+  return {
+    changeBookingInfo,
+  };
+};
+
 export class DatesPage extends Component {
   render() {
     return (
@@ -44,14 +57,15 @@ export class DatesPage extends Component {
           <text style={styles.monthName}>{months[new Date().getMonth()]}</text>
           {dates.map((item, index) => (
             <Link
-              to={{
-                pathname: "/timesPage",
-                state: {
+              to={"/timesPage"}
+              onClick={() =>
+                this.props.changeBookingInfo({
+                  //changeBookingInfo() is one of the actions created and passed as a prop
                   month: months[new Date().getMonth()],
                   dayOfMonth: item[0],
                   weekDay: item[1],
-                },
-              }}
+                })
+              }
             >
               <DateRectangle dateNum={item[0]} weekDay={item[1]} />
             </Link>
@@ -74,4 +88,8 @@ const styles = {
   },
 };
 
-export default DatesPage;
+// export default DatesPage;
+export default connect(
+  mapBookingInfoStateToProps,
+  mapDispatchToProps()
+)(DatesPage);

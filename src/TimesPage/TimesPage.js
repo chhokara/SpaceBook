@@ -3,6 +3,8 @@ import SectionBar from "../DatesPage/SectionBar";
 import TimeSlot from "./TimeSlot";
 import BookingHeader from "../BookingHeader";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux"; //for accessing global state (store)
+import { changeBookingInfo } from "../actions";
 
 let times = [
   "8:00am",
@@ -24,6 +26,13 @@ let times = [
   "12:00am",
 ];
 
+const mapBookingInfoStateToProps = (state) => ({
+  //map store states to props in our class component below using connector
+  month: state.month,
+  dayOfMonth: state.dayOfMonth,
+  weekDay: state.weekDay,
+});
+
 export class TimesPage extends Component {
   state = {
     timeFromTo: "Choose a slot",
@@ -41,17 +50,6 @@ export class TimesPage extends Component {
     this.setState({ timeFrom: time });
     this.setState({ timeTo: times[times.indexOf(time) + 1] });
   };
-
-  componentDidMount() {
-    const { handle } = this.props.match.params;
-    const { month } = this.props.location.state;
-    const { dayOfMonth } = this.props.location.state;
-    const { weekDay } = this.props.location.state;
-    console.log("I'm in component did mount of TimesPage.js");
-    this.setState({ month });
-    this.setState({ dayOfMonth });
-    this.setState({ weekDay });
-  }
 
   render() {
     console.log(this.state);
@@ -71,11 +69,13 @@ export class TimesPage extends Component {
           }}
         >
           <text style={styles.dateText}>
-            {this.state.weekDay}, {this.state.month}
+            {/* {this.state.weekDay}, {this.state.month} */}
+            {this.props.weekDay}, {this.props.month}
           </text>
           <text style={{ ...styles.dateText, fontSize: "30px" }}>
             {" "}
-            {this.state.dayOfMonth}
+            {/* {this.state.dayOfMonth} */}
+            {this.props.dayOfMonth}
           </text>
           {slots}
         </div>
@@ -138,4 +138,5 @@ const styles = {
   },
 };
 
-export default TimesPage;
+// export default TimesPage;
+export default connect(mapBookingInfoStateToProps, null)(TimesPage);
