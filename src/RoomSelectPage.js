@@ -66,20 +66,6 @@ export class RoomSelectPage extends Component {
           ))}
         </div>
         <div style={styles.nextContainer}>
-          {/* <Link
-            to={{
-              pathname: "/bookingFieldPage",
-              state: {
-                timeFrom: this.state.timeFrom,
-                timeTo: this.state.timeTo,
-                month: this.state.month,
-                dayOfMonth: this.state.dayOfMonth,
-                weekDay: this.state.weekDay,
-                space: this.state.space,
-                roomPicUrl: this.state.roomPicUrl,
-              },
-            }}
-          > */}
           <Link
             to={"/bookingFieldPage"}
             onClick={() =>
