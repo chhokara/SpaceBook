@@ -3,34 +3,18 @@ import BookingInfo from "./BookingInfo";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import DoneButton from "./DoneButton";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux"; //for accessing global state (store)
+
+const mapBookingInfoStateToProps = (state) => ({
+  //map store states to props in our class component below using connector
+  month: state.month,
+  dayOfMonth: state.dayOfMonth,
+  timeFrom: state.timeFrom,
+  timeTo: state.timeTo,
+  space: state.space,
+});
 
 export class ConfirmedPage extends Component {
-  state = {
-    timeFrom: "",
-    timeTo: "",
-    month: "",
-    dayOfMonth: "",
-    weekDay: "",
-    space: "",
-    roomPicUrl: "",
-  };
-  componentDidMount() {
-    const { handle } = this.props.match.params;
-    const { timeFrom } = this.props.location.state;
-    this.setState({ timeFrom });
-    const { timeTo } = this.props.location.state;
-    this.setState({ timeTo });
-    const { month } = this.props.location.state;
-    this.setState({ month });
-    const { dayOfMonth } = this.props.location.state;
-    this.setState({ dayOfMonth });
-    const { weekDay } = this.props.location.state;
-    this.setState({ weekDay });
-    const { space } = this.props.location.state;
-    this.setState({ space });
-    const { roomPicUrl } = this.props.location.state;
-    this.setState({ roomPicUrl });
-  }
   render() {
     return (
       <div style={styles.page}>
@@ -39,26 +23,14 @@ export class ConfirmedPage extends Component {
         <text style={{ color: "white" }}>_____________________</text>
         {/* View component to make the line would be better */}
         <BookingInfo
-          timeFrom={this.state.timeFrom}
-          timeTo={this.state.timeTo}
-          month={this.state.month}
-          dayOfMonth={this.state.dayOfMonth}
-          space={this.state.space}
+          timeFrom={this.props.timeFrom}
+          timeTo={this.props.timeTo}
+          month={this.props.month}
+          dayOfMonth={this.props.dayOfMonth}
+          space={this.props.space}
         />
-        <Link
-          to={{
-            pathname: "/home",
-            state: {
-              timeFrom: this.state.timeFrom,
-              timeTo: this.state.timeTo,
-              month: this.state.month,
-              dayOfMonth: this.state.dayOfMonth,
-              weekDay: this.state.weekDay,
-              space: this.state.space,
-              roomPicUrl: this.state.roomPicUrl,
-            },
-          }}
-        >
+        <Link to={"/home"}>
+          {/* want to add this booking to the database after clicking this button */}
           <DoneButton />
         </Link>
       </div>
@@ -90,4 +62,5 @@ const styles = {
   },
 };
 
-export default ConfirmedPage;
+// export default ConfirmedPage;
+export default connect(mapBookingInfoStateToProps, null)(ConfirmedPage);

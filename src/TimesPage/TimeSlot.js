@@ -3,11 +3,16 @@ import React, { Component } from "react";
 export class TimeSlot extends Component {
   state = {
     opacityDepth: "0.2",
+    clicked: true,
   };
 
   onClick = () => {
-    this.setState({ opacityDepth: "0.5" });
+    this.setState({ clicked: !this.state.clicked });
+    let opacityDepth = this.state.clicked === true ? "0.5" : "0.2";
+    this.setState({ opacityDepth: opacityDepth });
     this.props.labelTimes(this.props.time);
+    console.log(this.state.clicked);
+    console.log(this.state.opacityDepth);
   };
   render() {
     return (

@@ -88,11 +88,4 @@ function App() {
   );
 }
 
-const styles = {
-  divSizing: {
-    // height: "90vh",
-    // width: '10vh'
-  },
-};
-
 export default App;

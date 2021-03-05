@@ -3,6 +3,8 @@ import SectionBar from "../DatesPage/SectionBar";
 import TimeSlot from "./TimeSlot";
 import BookingHeader from "../BookingHeader";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux"; //for accessing global state (store)
+import { changeBookingInfo } from "../actions";
 
 let times = [
   "8:00am",
@@ -24,37 +26,37 @@ let times = [
   "12:00am",
 ];
 
+const mapBookingInfoStateToProps = (state) => ({
+  //map store states to props in our class component below using connector
+  month: state.month,
+  dayOfMonth: state.dayOfMonth,
+  weekDay: state.weekDay,
+});
+
+const mapDispatchToProps = () => {
+  return {
+    changeBookingInfo,
+  };
+};
+
 export class TimesPage extends Component {
   state = {
     timeFromTo: "Choose a slot",
     timeFrom: "",
     timeTo: "",
-    month: "",
-    dayOfMonth: "",
-    weekDay: "",
+    // month: "",
+    // dayOfMonth: "",
+    // weekDay: "",
   };
 
   labelTimes = (time) => {
-    console.log("HELLLOOOO from TimesPage.js");
     let timeFromToStr = time + "  to  " + times[times.indexOf(time) + 1];
     this.setState({ timeFromTo: timeFromToStr });
     this.setState({ timeFrom: time });
     this.setState({ timeTo: times[times.indexOf(time) + 1] });
   };
 
-  componentDidMount() {
-    const { handle } = this.props.match.params;
-    const { month } = this.props.location.state;
-    const { dayOfMonth } = this.props.location.state;
-    const { weekDay } = this.props.location.state;
-    console.log("I'm in component did mount of TimesPage.js");
-    this.setState({ month });
-    this.setState({ dayOfMonth });
-    this.setState({ weekDay });
-  }
-
   render() {
-    console.log(this.state);
     var slots = [];
     times.map((item, index) =>
       slots.push(<TimeSlot time={item} labelTimes={this.labelTimes} />)
@@ -71,27 +73,24 @@ export class TimesPage extends Component {
           }}
         >
           <text style={styles.dateText}>
-            {this.state.weekDay}, {this.state.month}
+            {this.props.weekDay}, {this.props.month}
           </text>
           <text style={{ ...styles.dateText, fontSize: "30px" }}>
             {" "}
-            {this.state.dayOfMonth}
+            {this.props.dayOfMonth}
           </text>
           {slots}
         </div>
         <div style={styles.nextContainer}>
           <text style={styles.timeFromToText}>{this.state.timeFromTo}</text>
           <Link
-            to={{
-              pathname: "/roomSelectPage",
-              state: {
+            to={"/roomSelectPage"}
+            onClick={() =>
+              this.props.changeBookingInfo({
                 timeFrom: this.state.timeFrom,
                 timeTo: this.state.timeTo,
-                month: this.state.month,
-                dayOfMonth: this.state.dayOfMonth,
-                weekDay: this.state.weekDay,
-              },
-            }}
+              })
+            }
           >
             <button style={styles.button}>NEXT</button>
           </Link>
@@ -138,4 +137,8 @@ const styles = {
   },
 };
 
-export default TimesPage;
+// export default TimesPage;
+export default connect(
+  mapBookingInfoStateToProps,
+  mapDispatchToProps()
+)(TimesPage);
