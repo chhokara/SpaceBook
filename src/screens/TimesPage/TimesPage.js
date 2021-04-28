@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import SectionBar from "../DatesPage/SectionBar";
 import TimeSlot from "./TimeSlot";
-import BookingHeader from "../BookingHeader";
+import BookingHeader from "../../components/BookingHeader";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux"; //for accessing global state (store)
-import { changeBookingInfo } from "../actions";
+import { changeBookingInfo } from "../../actions/index";
 
 let times = [
   "8:00am",

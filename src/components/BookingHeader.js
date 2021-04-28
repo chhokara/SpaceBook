@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactRoundedImage from "react-rounded-image";
-import MyPhoto from "./images/Fear_remedy.png";
+import MyPhoto from "../images/Fear_remedy.png";
 
 export class BookingHeader extends Component {
   render() {

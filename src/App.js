@@ -1,16 +1,16 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import defaultDeskPic from "./assets/defaultDeskPic.jpg";
-import Login from "./Login";
-import Card from "./CardComponent/Card";
-import DatesPage from "./DatesPage/DatesPage";
-import TimesPage from "./TimesPage/TimesPage";
-import BookingTypePage from "./BookingTypePage";
-import HCard from "./HCardComponent/HCard";
-import ConfirmedPage from "./ConfirmedBookingPage/ConfirmedPage";
-import Scroll from "./home";
-import RoomSelectPage from "./RoomSelectPage";
-import BookingPage from "./BookingFieldPage/BookingFieldPage";
+import Login from "./screens/Login";
+import Card from "./components/CardComponent/Card";
+import DatesPage from "./screens/DatesPage/DatesPage";
+import TimesPage from "./screens/TimesPage/TimesPage";
+import BookingTypePage from "./screens/BookingTypePage";
+import HCard from "./components/HCardComponent/HCard";
+import ConfirmedPage from "./screens/ConfirmedBookingPage/ConfirmedPage";
+import Scroll from "./screens/home";
+import RoomSelectPage from "./screens/RoomSelectPage";
+import BookingPage from "./screens/BookingFieldPage/BookingFieldPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import firebase from "./firebase";
 

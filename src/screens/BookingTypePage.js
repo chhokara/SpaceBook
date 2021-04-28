@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BookingHeader from "./BookingHeader";
+import BookingHeader from "../components/BookingHeader";
 
 export class BookingTypePage extends Component {
   render() {

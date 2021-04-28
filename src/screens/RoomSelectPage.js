@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import BookingHeader from "./BookingHeader";
+import BookingHeader from "../components/BookingHeader";
 import SectionBar from "./DatesPage/SectionBar";
-import HCard from "./HCardComponent/HCard";
+import HCard from "../components/HCardComponent/HCard";
 import { connect } from "react-redux"; //for accessing global state (store)
-import { changeBookingInfo } from "./actions";
+import { changeBookingInfo } from "../actions/index";
 
 const mapDispatchToProps = () => {
   return {

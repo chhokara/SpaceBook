@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import arrowRight from "../assets/arrowRight.svg";
+import arrowRight from "../../assets/arrowRight.svg";
 
 export class SectionBar extends Component {
   render() {

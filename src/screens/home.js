@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Display from "./CardComponent/Slider";
-import BookingHeader from "./BookingHeader";
+import Display from "../components/CardComponent/Slider";
+import BookingHeader from "../components/BookingHeader";
 import { Link } from "react-router-dom";
 
 export class Scroll extends Component {

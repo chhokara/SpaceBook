@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Card from "./Card";
-import defaultDeskPic from "../assets/defaultDeskPic.jpg";
+import defaultDeskPic from "../../assets/defaultDeskPic.jpg";
 
 // function CardData() {
 //   const rtn = [

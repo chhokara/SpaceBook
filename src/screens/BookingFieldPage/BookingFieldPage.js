@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import BookingHeader from "../BookingHeader";
-import SectionBar from "../DatesPage/SectionBar";
+import BookingHeader from "../../components/BookingHeader";
+import SectionBar from "../../screens/DatesPage/SectionBar";
 import FieldSection from "./FieldSection";
 import Buttons from "./Buttons";
 import { Link } from "react-router-dom";

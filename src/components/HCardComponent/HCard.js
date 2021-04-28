@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import HCardRightSide from "./HCardRightSide";
-import defaultDeskPic from "../assets/defaultDeskPic.jpg";
+import defaultDeskPic from "../../assets/defaultDeskPic.jpg";
 import PeopleCount from "./PeopleCount";
 
 export class HCard extends Component {

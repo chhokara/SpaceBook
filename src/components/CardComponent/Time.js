@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import dotsAndLine from "../assets/timeDotsAndLine.svg";
+import dotsAndLine from "../../assets/timeDotsAndLine.svg";
 
 export class Time extends Component {
   render() {
