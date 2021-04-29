@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Display from "../components/CardComponent/Slider";
 import BookingHeader from "../components/BookingHeader";
 import { Link } from "react-router-dom";
 
-export class Scroll extends Component {
-  state = {
+export const Scroll = () => {
+  const [state, setState] = useState({
     timeFrom: "",
     timeTo: "",
     month: "",
@@ -12,50 +13,59 @@ export class Scroll extends Component {
     weekDay: "",
     space: "",
     roomPicUrl: "",
-  };
-  componentDidMount() {
-    const { handle } = this.props.match.params;
-    if (this.props.location.state) {
-      const { timeFrom } = this.props.location.state;
-      this.setState({ timeFrom });
-      const { timeTo } = this.props.location.state;
-      this.setState({ timeTo });
-      const { month } = this.props.location.state;
-      this.setState({ month });
-      const { dayOfMonth } = this.props.location.state;
-      this.setState({ dayOfMonth });
-      const { weekDay } = this.props.location.state;
-      this.setState({ weekDay });
-      const { space } = this.props.location.state;
-      this.setState({ space });
-      const { roomPicUrl } = this.props.location.state;
-      this.setState({ roomPicUrl });
+  });
+
+  const [name, setName] = useState("");
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  useEffect(() => {
+    if (userInfo) {
+      let userName = userInfo.name.split(" ");
+      setName(userName[0]);
     }
-  }
-  render() {
-    console.log("IM HOME");
-    console.log(this.state);
-    return (
-      <div>
-        <BookingHeader title="My Bookings" />
-        <div style={styles.sliderAndButtonDiv}>
-          <Display
-            floorAndRoom={this.state.space}
-            timeFrom={this.state.timeFrom}
-            timeTo={this.state.timeTo}
-            weekDay={this.state.weekDay}
-            month={this.state.month}
-            dayOfMonth={this.state.dayOfMonth}
-            picUrl={this.state.roomPicUrl}
-          />
-          <Link to="/datesPage">
-            <button style={styles.button}>+ NEW BOOKING</button>
-          </Link>
-        </div>
+    if (state) {
+      const { timeFrom } = state;
+      setState({ timeFrom });
+      const { timeTo } = state;
+      setState({ timeTo });
+      const { month } = state;
+      setState({ month });
+      const { dayOfMonth } = state;
+      setState({ dayOfMonth });
+      const { weekDay } = state;
+      setState({ weekDay });
+      const { space } = state;
+      setState({ space });
+      const { roomPicUrl } = state;
+      setState({ roomPicUrl });
+    }
+  }, [state, userInfo]);
+  console.log("IM HOME");
+  console.log(state);
+
+  return (
+    <div>
+      <BookingHeader title="My Bookings" />
+      <h2 style={styles.nameLayout}>Welcome {name}</h2>
+      <div style={styles.sliderAndButtonDiv}>
+        <Display
+          floorAndRoom={state.space}
+          timeFrom={state.timeFrom}
+          timeTo={state.timeTo}
+          weekDay={state.weekDay}
+          month={state.month}
+          dayOfMonth={state.dayOfMonth}
+          picUrl={state.roomPicUrl}
+        />
+        <Link to="/datesPage">
+          <button style={styles.button}>+ NEW BOOKING</button>
+        </Link>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 const styles = {
   button: {
@@ -78,6 +88,12 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     paddingTop: "80px",
+  },
+  nameLayout: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#1D1D1D",
   },
 };
 

@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-import userRoutes from "./routes/userRoutes";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 
@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.get("/api/users", userRoutes);
+app.use("/api/users", userRoutes);
 
 const PORT = process.env.PORT;
 
