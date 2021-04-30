@@ -1,33 +1,42 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import ReactRoundedImage from "react-rounded-image";
-import MyPhoto from "../images/Fear_remedy.png";
 
-export class BookingHeader extends Component {
-  render() {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginTop: "30px",
-          paddingLeft: "30px",
-          paddingRight: "30px",
-        }}
-      >
-        {/* <h1 style={styles.headerStyle}>I am looking for...</h1> */}
-        <h1 style={styles.headerStyle}>{this.props.title}</h1>
-        <ReactRoundedImage
-          image={MyPhoto}
-          roundedColor="#321124"
-          imageWidth="60"
-          imageHeight="60"
-          roundedSize="6"
-          hoverColor="#DD1144"
-        />
-      </div>
-    );
-  }
-}
+export const BookingHeader = ({ title }) => {
+  const [pic, setPic] = useState("Fear_remedy.png");
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const userInfo = userLogin.userInfo;
+
+  useEffect(() => {
+    if (userInfo) {
+      setPic(userInfo.image);
+      console.log(pic);
+    }
+  }, [userInfo, pic]);
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginTop: "30px",
+        paddingLeft: "30px",
+        paddingRight: "30px",
+      }}
+    >
+      {/* <h1 style={styles.headerStyle}>I am looking for...</h1> */}
+      <h1 style={styles.headerStyle}>{title}</h1>
+      <ReactRoundedImage
+        image={require("../images/" + pic).default}
+        roundedColor="#321124"
+        imageWidth="60"
+        imageHeight="60"
+        roundedSize="6"
+        hoverColor="#DD1144"
+      />
+    </div>
+  );
+};
 
 const styles = {
   headerStyle: {

@@ -17,7 +17,7 @@ export const Scroll = () => {
 
   const [name, setName] = useState("");
 
-  const userLogin = useSelector((state) => state.userLogin);
+  const userLogin = useSelector((s) => s.userLogin);
   const { userInfo } = userLogin;
 
   useEffect(() => {
