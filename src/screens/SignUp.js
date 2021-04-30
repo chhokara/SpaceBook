@@ -1,39 +1,54 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import spaceBookLogo from "../assets/spaceBookLogo.jpg";
-import { login } from "../actions/userActions";
 import { Link } from "react-router-dom";
+import { register } from "../actions/userActions";
 
-const Login = ({ history }) => {
+const SignUp = ({ history }) => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const userInfo = userLogin.userInfo;
-  const error = userLogin.error;
+  const userRegister = useSelector((state) => state.userRegister);
+  const userInfo = userRegister.userInfo;
+  const error = userRegister.error;
 
   useEffect(() => {
+    console.log(name);
+
     if (userInfo) {
-      console.log(userInfo);
       history.push("/home");
     }
   }, [history, userInfo]);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    if (confirmPassword === password) {
+      dispatch(register(name, email, password));
+    } else {
+      setMessage("Passwords do not match");
+    }
   };
-
   return (
     <div className="centered" style={styles.outsideContainer}>
       <img src={spaceBookLogo} alt="logo" />
+      {message && <span style={styles.errorMessage}>{message}</span>}
       {error && (
         <span style={styles.errorMessage}>
-          Sorry, invalid email or password
+          Please enter all fields correctly
         </span>
       )}
+      <input
+        type="text"
+        name="name"
+        style={styles.inputStyle}
+        placeholder="Enter Name"
+        onChange={(e) => setName(e.target.value)}
+      />
       <input
         type="text"
         name="email"
@@ -48,16 +63,19 @@ const Login = ({ history }) => {
         placeholder="Enter Password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button style={styles.button} onClick={onSubmit}>
-        LOGIN
+      <input
+        type="password"
+        name="confirm-password"
+        style={styles.inputStyle}
+        placeholder="Confirm Password"
+        onChange={(e) => setConfirmPassword(e.target.value)}
+      />
+      <button
+        style={{ ...styles.button, background: "#F2FCFB", color: "#1D1D1D" }}
+        onClick={onSubmit}
+      >
+        SIGN UP
       </button>
-      <Link to="/signup">
-        <button
-          style={{ ...styles.button, background: "#F2FCFB", color: "#1D1D1D" }}
-        >
-          SIGN UP
-        </button>
-      </Link>
     </div>
   );
 };
@@ -93,4 +111,4 @@ const styles = {
   },
 };
 
-export default Login;
+export default SignUp;

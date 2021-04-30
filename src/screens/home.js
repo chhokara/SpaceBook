@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Display from "../components/CardComponent/Slider";
 import BookingHeader from "../components/BookingHeader";
