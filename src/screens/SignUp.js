@@ -6,6 +6,11 @@ import { register } from "../actions/userActions";
 import ReactRoundedImage from "react-rounded-image";
 import MyImage from "../images/profile.png";
 
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
 const SignUp = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,10 +36,14 @@ const SignUp = ({ history }) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    if (confirmPassword === password) {
-      dispatch(register(name, email, password, file));
-    } else {
+    if (!validateEmail(email)) {
+      setMessage("Please enter a valid email");
+    } else if (password.length < 8) {
+      setMessage("Password must contain at least 8 characters");
+    } else if (confirmPassword !== password) {
       setMessage("Passwords do not match");
+    } else {
+      dispatch(register(name, email, password, file));
     }
   };
   return (
@@ -73,7 +82,7 @@ const SignUp = ({ history }) => {
         onChange={(e) => setName(e.target.value)}
       />
       <input
-        type="text"
+        type="email"
         name="email"
         style={styles.inputStyle}
         placeholder="Enter Email"

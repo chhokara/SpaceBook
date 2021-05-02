@@ -44,7 +44,7 @@ export const Scroll = ({ history }) => {
       const { roomPicUrl } = state;
       setState({ roomPicUrl });
     }
-  }, [state, userInfo]);
+  }, [state, userInfo, history]);
   console.log("IM HOME");
   console.log(state);
 
