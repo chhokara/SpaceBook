@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ReactRoundedImage from "react-rounded-image";
+import MyImage from "../images/Fear_remedy.png";
 
 export const BookingHeader = ({ title }) => {
-  const [pic, setPic] = useState("Fear_remedy.png");
+  const [pic, setPic] = useState(MyImage);
 
   const userLogin = useSelector((state) => state.userLogin);
   const userInfo = userLogin.userInfo;
@@ -11,9 +12,8 @@ export const BookingHeader = ({ title }) => {
   useEffect(() => {
     if (userInfo) {
       setPic(userInfo.image);
-      console.log(pic);
     }
-  }, [userInfo, pic]);
+  }, [userInfo]);
   return (
     <div
       style={{
@@ -27,7 +27,7 @@ export const BookingHeader = ({ title }) => {
       {/* <h1 style={styles.headerStyle}>I am looking for...</h1> */}
       <h1 style={styles.headerStyle}>{title}</h1>
       <ReactRoundedImage
-        image={require("../images/" + pic).default}
+        image={pic}
         roundedColor="#321124"
         imageWidth="60"
         imageHeight="60"

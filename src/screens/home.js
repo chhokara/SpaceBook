@@ -4,7 +4,7 @@ import Display from "../components/CardComponent/Slider";
 import BookingHeader from "../components/BookingHeader";
 import { Link } from "react-router-dom";
 
-export const Scroll = () => {
+export const Scroll = ({ history }) => {
   const [state, setState] = useState({
     timeFrom: "",
     timeTo: "",
@@ -24,6 +24,9 @@ export const Scroll = () => {
     if (userInfo) {
       let userName = userInfo.name.split(" ");
       setName(userName[0]);
+    }
+    if (!userInfo) {
+      history.push("/");
     }
     if (state) {
       const { timeFrom } = state;

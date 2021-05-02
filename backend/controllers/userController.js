@@ -28,7 +28,7 @@ const authUser = asyncHandler(async (req, res) => {
 // @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, image } = req.body;
   const existingUser = await User.findOne({ email });
   if (existingUser) {
     res.status(400);
@@ -39,6 +39,7 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password: bcrypt.hashSync(password, 10),
+    image,
   });
 
   if (user) {
@@ -46,6 +47,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      image: user.image,
       token: generateToken(user._id),
     });
   } else {

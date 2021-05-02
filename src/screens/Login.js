@@ -4,7 +4,7 @@ import spaceBookLogo from "../assets/spaceBookLogo.jpg";
 import { login } from "../actions/userActions";
 import { Link } from "react-router-dom";
 
-const Login = ({ history }) => {
+const Login = ({ location, history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,7 +19,7 @@ const Login = ({ history }) => {
       console.log(userInfo);
       history.push("/home");
     }
-  }, [history, userInfo]);
+  }, [location, history, userInfo]);
 
   const onSubmit = (e) => {
     e.preventDefault();

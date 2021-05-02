@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import spaceBookLogo from "../assets/spaceBookLogo.jpg";
 import { Link } from "react-router-dom";
 import { register } from "../actions/userActions";
+import ReactRoundedImage from "react-rounded-image";
+import MyImage from "../images/profile.png";
 
 const SignUp = ({ history }) => {
   const [name, setName] = useState("");
@@ -10,6 +12,7 @@ const SignUp = ({ history }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [file, setFile] = useState(MyImage);
 
   const dispatch = useDispatch();
 
@@ -18,17 +21,18 @@ const SignUp = ({ history }) => {
   const error = userRegister.error;
 
   useEffect(() => {
-    console.log(name);
-
     if (userInfo) {
       history.push("/home");
     }
   }, [history, userInfo]);
 
+  const handleUpload = (e) => {
+    setFile(URL.createObjectURL(e.target.files[0]));
+  };
   const onSubmit = (e) => {
     e.preventDefault();
     if (confirmPassword === password) {
-      dispatch(register(name, email, password));
+      dispatch(register(name, email, password, file));
     } else {
       setMessage("Passwords do not match");
     }
@@ -36,6 +40,25 @@ const SignUp = ({ history }) => {
   return (
     <div className="centered" style={styles.outsideContainer}>
       <img src={spaceBookLogo} alt="logo" />
+      <div style={styles.upload}>
+        <ReactRoundedImage
+          image={file}
+          roundedColor="#321124"
+          imageWidth="200"
+          imageHeight="200"
+          roundedSize="6"
+          hoverColor="#DD1144"
+        />
+        <label style={styles.customInput}>
+          <input
+            type="file"
+            style={styles.uploadFile}
+            onChange={handleUpload}
+          />
+          UPLOAD IMAGE
+        </label>
+      </div>
+
       {message && <span style={styles.errorMessage}>{message}</span>}
       {error && (
         <span style={styles.errorMessage}>
@@ -108,6 +131,32 @@ const styles = {
   },
   errorMessage: {
     color: "red",
+  },
+  upload: {
+    margin: "10px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  uploadFile: {
+    margin: "10px",
+    display: "none",
+  },
+  customInput: {
+    border: "1px solid #ccc",
+    display: "inline-block",
+    padding: "6px 12px",
+    cursor: "pointer",
+    width: "202px",
+    height: "48px",
+    background: "#1D1D1D",
+    border: "2px solid #1D1D1D",
+    borderRadius: "4px",
+    fontWeight: "bold",
+    fontSize: "12px",
+    color: "white",
+    marginTop: "10px",
+    textAlign: "center",
   },
 };
 
