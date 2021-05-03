@@ -29,28 +29,25 @@ const Login = ({ location, history }) => {
   return (
     <div className="centered" style={styles.outsideContainer}>
       <img src={spaceBookLogo} alt="logo" />
-      {error && (
-        <span style={styles.errorMessage}>
-          Sorry, invalid email or password
-        </span>
-      )}
-      <input
-        type="text"
-        name="email"
-        style={styles.inputStyle}
-        placeholder="Enter Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        name="password"
-        style={styles.inputStyle}
-        placeholder="Enter Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button style={styles.button} onClick={onSubmit}>
-        LOGIN
-      </button>
+      {error && <span style={styles.errorMessage}>{error}</span>}
+      <form onSubmit={onSubmit} style={styles.form}>
+        <input
+          type="email"
+          name="email"
+          style={styles.inputStyle}
+          placeholder="Enter Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          name="password"
+          style={styles.inputStyle}
+          placeholder="Enter Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button style={styles.button}>LOGIN</button>
+      </form>
+
       <Link to="/signup">
         <button
           style={{ ...styles.button, background: "#F2FCFB", color: "#1D1D1D" }}
@@ -90,6 +87,13 @@ const styles = {
   },
   errorMessage: {
     color: "red",
+  },
+  form: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
 };
 

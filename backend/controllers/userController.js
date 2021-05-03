@@ -28,7 +28,9 @@ const authUser = asyncHandler(async (req, res) => {
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, image } = req.body;
+
   const existingUser = await User.findOne({ email });
+
   if (existingUser) {
     throw new Error("User already exists");
   }
@@ -36,7 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     name,
     email,
-    password: bcrypt.hashSync(password, 10),
+    password,
     image,
   });
 

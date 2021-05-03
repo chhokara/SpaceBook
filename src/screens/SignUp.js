@@ -34,7 +34,7 @@ const SignUp = ({ history }) => {
   const handleUpload = (e) => {
     setFile(URL.createObjectURL(e.target.files[0]));
   };
-  const onSubmit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     if (confirmPassword !== password) {
       setMessage("Passwords do not match");
@@ -66,8 +66,7 @@ const SignUp = ({ history }) => {
 
       {message && <span style={styles.errorMessage}>{message}</span>}
       {error && <span style={styles.errorMessage}>{error}</span>}
-
-      <form onSubmit={onSubmit} style={styles.form}>
+      <form onSubmit={submitHandler} style={styles.form}>
         <input
           type="text"
           name="name"
@@ -98,6 +97,7 @@ const SignUp = ({ history }) => {
         />
         <button
           style={{ ...styles.button, background: "#F2FCFB", color: "#1D1D1D" }}
+          type="submit"
         >
           SIGN UP
         </button>
