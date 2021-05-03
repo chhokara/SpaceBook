@@ -36,11 +36,7 @@ const SignUp = ({ history }) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!validateEmail(email)) {
-      setMessage("Please enter a valid email");
-    } else if (password.length < 8) {
-      setMessage("Password must contain at least 8 characters");
-    } else if (confirmPassword !== password) {
+    if (confirmPassword !== password) {
       setMessage("Passwords do not match");
     } else {
       dispatch(register(name, email, password, file));
@@ -70,40 +66,42 @@ const SignUp = ({ history }) => {
 
       {message && <span style={styles.errorMessage}>{message}</span>}
       {error && <span style={styles.errorMessage}>{error}</span>}
-      <input
-        type="text"
-        name="name"
-        style={styles.inputStyle}
-        placeholder="Enter Name"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="email"
-        name="email"
-        style={styles.inputStyle}
-        placeholder="Enter Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        name="password"
-        style={styles.inputStyle}
-        placeholder="Enter Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <input
-        type="password"
-        name="confirm-password"
-        style={styles.inputStyle}
-        placeholder="Confirm Password"
-        onChange={(e) => setConfirmPassword(e.target.value)}
-      />
-      <button
-        style={{ ...styles.button, background: "#F2FCFB", color: "#1D1D1D" }}
-        onClick={onSubmit}
-      >
-        SIGN UP
-      </button>
+
+      <form onSubmit={onSubmit} style={styles.form}>
+        <input
+          type="text"
+          name="name"
+          style={styles.inputStyle}
+          placeholder="Enter Name"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="email"
+          name="email"
+          style={styles.inputStyle}
+          placeholder="Enter Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          name="password"
+          style={styles.inputStyle}
+          placeholder="Enter Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          type="password"
+          name="confirm-password"
+          style={styles.inputStyle}
+          placeholder="Confirm Password"
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <button
+          style={{ ...styles.button, background: "#F2FCFB", color: "#1D1D1D" }}
+        >
+          SIGN UP
+        </button>
+      </form>
     </div>
   );
 };
@@ -122,7 +120,7 @@ const styles = {
   },
   inputStyle: {
     padding: "15px",
-    width: "80%",
+    width: "100%",
     maxWidth: "500px",
     height: "48px",
     marginBottom: "10px",
@@ -162,6 +160,13 @@ const styles = {
     color: "white",
     marginTop: "10px",
     textAlign: "center",
+  },
+  form: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
 };
 
