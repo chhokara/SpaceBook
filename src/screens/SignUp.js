@@ -69,11 +69,7 @@ const SignUp = ({ history }) => {
       </div>
 
       {message && <span style={styles.errorMessage}>{message}</span>}
-      {error && (
-        <span style={styles.errorMessage}>
-          Please enter all fields correctly
-        </span>
-      )}
+      {error && <span style={styles.errorMessage}>{error}</span>}
       <input
         type="text"
         name="name"

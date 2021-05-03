@@ -19,7 +19,6 @@ const authUser = asyncHandler(async (req, res) => {
       token: generateToken(user._id),
     });
   } else {
-    res.status(401);
     throw new Error("Invalid email or password");
   }
 });
@@ -31,8 +30,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, image } = req.body;
   const existingUser = await User.findOne({ email });
   if (existingUser) {
-    res.status(400);
-    throw new Error("Error: that user already exists");
+    throw new Error("User already exists");
   }
 
   const user = await User.create({
@@ -51,8 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
       token: generateToken(user._id),
     });
   } else {
-    res.status(400);
-    throw new Error("Error: user could not be created");
+    throw new Error("User could not be created");
   }
 });
 

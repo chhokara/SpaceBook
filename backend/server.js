@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
+import { error } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRoutes);
+
+app.use(error);
 
 const PORT = process.env.PORT;
 
