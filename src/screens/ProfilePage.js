@@ -1,7 +1,7 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
-import MyImage from "../images/profile.png";
 import ReactRoundedImage from "react-rounded-image";
 import BookingHeader from "../components/BookingHeader";
 
@@ -46,8 +46,22 @@ const ProfilePage = ({ history }) => {
     }
   };
 
-  const handleUpload = (e) => {
-    setPic(URL.createObjectURL(e.target.files[0]));
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const config = {
+        headers: { "Content-Type": "multipart/form-data" },
+      };
+
+      const { data } = await axios.post("/api/upload", formData, config);
+
+      setPic(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

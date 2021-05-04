@@ -5,19 +5,19 @@ const users = [
     name: "Adam Driver",
     email: "adam@example.com",
     password: bcryptjs.hashSync("1234567", 10),
-    image: "adam.jpeg",
+    image: "/images/adam.jpeg",
   },
   {
     name: "John Doe",
     email: "john@example.com",
     password: bcryptjs.hashSync("1234567", 10),
-    image: "john.jpeg",
+    image: "/images/john.jpeg",
   },
   {
     name: "Jane Doe",
     email: "jane@example.com",
     password: bcryptjs.hashSync("1234567", 10),
-    image: "jane.jpeg",
+    image: "/images/jane.jpeg",
   },
 ];
 

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import spaceBookLogo from "../assets/spaceBookLogo.jpg";
@@ -26,8 +27,22 @@ const SignUp = ({ history }) => {
     }
   }, [history, userInfo]);
 
-  const handleUpload = (e) => {
-    setFile(URL.createObjectURL(e.target.files[0]));
+  const handleUpload = async (e) => {
+    const img = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", img);
+
+    try {
+      const config = {
+        headers: { "Content-Type": "multipart/form-data" },
+      };
+
+      const { data } = await axios.post("/api/upload", formData, config);
+
+      setFile(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
   const submitHandler = (e) => {
     e.preventDefault();
