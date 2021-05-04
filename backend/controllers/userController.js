@@ -66,6 +66,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      image: user.image,
     });
   } else {
     throw new Error("User does not exits");
@@ -82,6 +83,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
     user.password = req.body.password || user.password;
+    user.image = req.body.image || user.image;
 
     const updatedUser = await user.save();
 
@@ -89,6 +91,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.password,
+      image: updatedUser.image,
       token: generateToken(updatedUser._id),
     });
   } else {
