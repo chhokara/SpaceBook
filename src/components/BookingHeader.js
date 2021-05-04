@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import ReactRoundedImage from "react-rounded-image";
 import MyImage from "../images/Fear_remedy.png";
 
-export const BookingHeader = ({ title }) => {
+export const BookingHeader = ({ title, history }) => {
   const [pic, setPic] = useState(MyImage);
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -14,6 +15,10 @@ export const BookingHeader = ({ title }) => {
       setPic(userInfo.image);
     }
   }, [userInfo]);
+
+  const clickHandler = () => {
+    history.push("/profile");
+  };
   return (
     <div
       style={{
@@ -26,14 +31,16 @@ export const BookingHeader = ({ title }) => {
     >
       {/* <h1 style={styles.headerStyle}>I am looking for...</h1> */}
       <h1 style={styles.headerStyle}>{title}</h1>
-      <ReactRoundedImage
-        image={pic}
-        roundedColor="#321124"
-        imageWidth="60"
-        imageHeight="60"
-        roundedSize="6"
-        hoverColor="#DD1144"
-      />
+      <Link to="/profile">
+        <ReactRoundedImage
+          image={pic}
+          roundedColor="#321124"
+          imageWidth="60"
+          imageHeight="60"
+          roundedSize="6"
+          hoverColor="#DD1144"
+        />
+      </Link>
     </div>
   );
 };

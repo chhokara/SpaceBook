@@ -55,4 +55,45 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-export { authUser, registerUser };
+// @desc Get user profile
+// @route GET /api/profile
+// @access Public
+const getUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+    });
+  } else {
+    throw new Error("User does not exits");
+  }
+});
+
+// @desc Update user profile
+// @route UPDATE /api/profile
+// @access Public
+const updateUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.password = req.body.password || user.password;
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.password,
+      token: generateToken(updatedUser._id),
+    });
+  } else {
+    throw new Error("User does not exist");
+  }
+});
+
+export { authUser, registerUser, getUserProfile, updateUserProfile };

@@ -6,11 +6,6 @@ import { register } from "../actions/userActions";
 import ReactRoundedImage from "react-rounded-image";
 import MyImage from "../images/profile.png";
 
-function validateEmail(email) {
-  var re = /\S+@\S+\.\S+/;
-  return re.test(email);
-}
-
 const SignUp = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

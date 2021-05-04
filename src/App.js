@@ -14,6 +14,7 @@ import BookingPage from "./screens/BookingFieldPage/BookingFieldPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import firebase from "./firebase";
 import SignUp from "./screens/SignUp";
+import ProfilePage from "./screens/ProfilePage";
 
 function App() {
   // //hooks
@@ -60,6 +61,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Login} />
+            <Route exact path="/profile" component={ProfilePage} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/home" component={Scroll} />
             <Route exact path="/datesPage" component={DatesPage} />
