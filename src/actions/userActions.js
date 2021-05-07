@@ -11,6 +11,8 @@ import {
   USER_UPDATE_FAIL,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_REQUEST,
+  USER_LOGOUT,
+  USER_DETAILS_RESET,
 } from "../constants/userConstants";
 import axios from "axios";
 
@@ -125,4 +127,10 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
           : error.message,
     });
   }
+};
+
+export const logout = () => async (dispatch) => {
+  localStorage.removeItem("userInfo");
+  dispatch({ type: USER_LOGOUT });
+  dispatch({ type: USER_DETAILS_RESET });
 };

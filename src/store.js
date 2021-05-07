@@ -17,11 +17,9 @@ const reducer = combineReducers({
   bookingInfo: bookingInfoReducer,
 });
 
-// const userInfoFromStorage = localStorage.getItem("userInfo")
-//   ? JSON.parse(localStorage.getItem("userInfo"))
-//   : null;
-
-const userInfoFromStorage = null;
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
 
 const initialState = { userLogin: { userInfo: userInfoFromStorage } };
 
